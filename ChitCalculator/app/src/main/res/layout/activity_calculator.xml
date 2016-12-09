@@ -8,19 +8,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter the Total Amount for this Chit Fund"/>
-
-    <EditText
-        android:id="@+id/editTextChitAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:hint="Chit Amount"
-        android:inputType="number"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="Enter the original duration for this Chit Fund in months"/>
 
     <EditText

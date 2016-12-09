@@ -15,9 +15,6 @@ import butterknife.ButterKnife;
 
 public class CalculatorActivity extends AppCompatActivity {
 
-    @BindView(R.id.editTextChitAmount)
-    EditText editTextChitAmount;
-
     @BindView(R.id.editTextOriginalDuration)
     EditText editTextOriginalDuration;
 
@@ -53,22 +50,19 @@ public class CalculatorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AppUtils.hideSoftKeyboard(CalculatorActivity.this);
-                calculateAPR(Long.parseLong(editTextChitAmount.getText()
-                                                              .toString()), Integer.parseInt(editTextOriginalDuration.getText()
-                                                                                                                     .toString()), Integer.parseInt(editTextActualDuration.getText()
-                                                                                                                                                                          .toString()));
+                calculateAPR(Integer.parseInt(editTextOriginalDuration.getText()
+                                                                      .toString()), Integer.parseInt(editTextActualDuration.getText()
+                                                                                                                           .toString()));
             }
         });
     }
 
-    private void calculateAPR(final long chitAmount, final int originalTenure, final int actualTenure) {
+    private void calculateAPR(final int originalTenure, final int actualTenure) {
         Thread thread = new Thread(new Runnable() {
 
             @Override
             public void run() {
-                final double rate = ChitfundUtil.getRate(chitAmount, originalTenure, actualTenure);
-
-                long installment = chitAmount / originalTenure;
+                final double rate = ChitfundUtil.getRate(originalTenure, actualTenure);
 
                 runOnUiThread(new Runnable() {
 
